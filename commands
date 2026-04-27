@@ -1,0 +1,1 @@
+python -m mpy_cross -mno-unicode -O3 -march=armv7m [input.py]
