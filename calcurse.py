@@ -34,7 +34,7 @@ class CalcurseApp():
 
     def foreground(self):
         wasp.system.bar.clock = True
-        wasp.system.request_event(wasp.EventMask.SWIPE_UPDOWN)
+        wasp.system.request_event(wasp.EventMask.SWIPE_UPDOWN | wasp.EventMask.SWIPE_LEFTRIGHT)
 
         now = wasp.watch.rtc.get_localtime()
         self.day = now[0] * 366 + now[7] - 1 # tm_yday is 1-indexed
@@ -76,6 +76,13 @@ class CalcurseApp():
             elif self.day > self.min_day:
                 self.day -= 1
                 self.seek_day()
+        elif event[0] == wasp.EventType.LEFT:
+            if self.day < self.max_day:
+                self.day += 1
+                self.seek_day()
+        elif event[0] == wasp.EventType.RIGHT:
+            wasp.system.navigate(wasp.EventType.HOME)
+            return # Emulate system default behaviour
         self._draw()
 
     def _draw(self):
