@@ -45,8 +45,8 @@ pip install mpy-cross==1.13
 cd wasp-os-apps
 python -m mpy_cross -mno-unicode -O3 -march=armv7m calcurse.py
 python -m mpy_cross -mno-unicode -O3 -march=armv7m rich_clk.py
-/path/to/wasp-os/tools/wasptool --upload --binary calcurse.mpy
-/path/to/wasp-os/tools/wasptool --upload --binary rich_clk.mpy
+/path/to/wasp-os/tools/wasptool --binary --upload calcurse.mpy
+/path/to/wasp-os/tools/wasptool --binary --upload rich_clk.mpy
 ```
 
 6. Convert your calcurse data to a format compatible with the app:

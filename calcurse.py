@@ -116,9 +116,7 @@ class CalcurseApp():
                 draw.string(day_string + "{:02}:{:02}".format(hour, minute), 0, height)
 
                 chunks = draw.wrap(apt_name, 240)
-                for j in range(1, len(chunks)):
+                for j in range(1, min(len(chunks), 3)):
                     draw.string(apt_name[chunks[j-1]:chunks[j]], 0, height + 28 * j)
-                
-                # print(i, self.index, self.curr_index, self.next_index, self.day)
 
         wasp.gc.collect()

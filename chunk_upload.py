@@ -12,6 +12,8 @@ chunk = 0
 
 if input("Verify only? (Y/n) ").lower() != "y":
     with open(file, "r") as f:
+        subprocess.run([wasptool_path, "--eval", f"import os; os.remove('{filename}')"], check=True)
+        print(f"Uploading {filename} in {chunks} chunks...")
         while True:
             data = f.read(size)
             chunk += 1
